@@ -1,13 +1,21 @@
 resilience4j.circuitbreaker:
   configs:
     default:
+#      COUNT_BASED or TIME_BASED
       slidingWindowType: COUNT_BASED
+#      Number of request will be used to calculate
       slidingWindowSize: 10
+#      Minimum number of request before calculating
       minimumNumberOfCalls: 5
+#      50% of failure
       failureRateThreshold: 50
+#      1500ms will be considered as slow count
       slowCallDurationThreshold: 1500
+#      50% of slow call
       slowCallRateThreshold: 50
+#      Allow 2 requests in half-open state before switch back to open
       permittedNumberOfCallsInHalfOpenState: 2
+#      Stay in Open in 10s before switch to half open
       waitDurationInOpenState: 10000
       registerHealthIndicator: true
     someShared:
